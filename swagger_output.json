@@ -1,0 +1,81 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Serviço de envio de email",
+    "description": ""
+  },
+  "contact": {
+    "name": "Alexander Roberto dos Santos",
+    "url": "https://github.com/alexandersantosdev",
+    "email": "lekxandy@hotmail.com"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Servidor Local"
+    }
+  ],
+  "paths": {
+    "/api/email": {
+      "post": {
+        "tags": [
+          "Email"
+        ],
+        "description": "Envia um email usando nodemailer",
+        "summary": "Envia um email",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "body": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Html message to send in email body"
+                },
+                "from": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Sender email address"
+                },
+                "to": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Receiver email address"
+                },
+                "subject": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Subject of the email"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email sent successfully"
+          },
+          "400": {
+            "description": "Mensagem de erro"
+          }
+        }
+      }
+    }
+  }
+}
